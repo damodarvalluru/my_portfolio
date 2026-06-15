@@ -136,7 +136,7 @@ document.getElementById("contactForm").addEventListener("submit", async function
 
     try {
 
-        const response = await fetch("https://my-portfolio-9173.onrender.com/send", {
+        const response = await fetch("https://my-portfolio1-ivnv.onrender.com/send", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
