@@ -45,7 +45,9 @@ function type() {
     }
 
 window.addEventListener('scroll', () => {
-
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('section, header');
+        
     // Active navbar
     let current = "";
 
@@ -60,9 +62,13 @@ window.addEventListener('scroll', () => {
     navLinks.forEach(link => {
         link.classList.remove('active');
 
-        if(link.getAttribute('href').includes(current)){
-            link.classList.add('active');
-        }
+        if(link.getAttribute('href') === "#" + current){
+
+    link.classList.add('active');
+
+    moveIndicator(link);
+
+}
     });
 
     // Arrow logic
@@ -86,12 +92,22 @@ window.addEventListener('scroll', () => {
 
 });
     document.addEventListener('DOMContentLoaded', () => {
+        const indicator = document.querySelector(".nav-indicator");
+
+function moveIndicator(activeLink){
+
+    if(!activeLink) return;
+
+    indicator.style.width =
+        activeLink.offsetWidth + "px";
+
+    indicator.style.left =
+        activeLink.offsetLeft + "px";
+}
+
         textElement = document.getElementById('typewriter');
         type();
 
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('section, header');
-        
         const starsContainer = document.getElementById('stars');
         for (let i = 0; i < 150; i++) {
         const star = document.createElement('div');
@@ -102,6 +118,64 @@ window.addEventListener('scroll', () => {
         star.style.left = Math.random() * 100 + '%';
         star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
         starsContainer.appendChild(star);
+
+        const form = document.getElementById("contactForm");
+
+    if(form){
+
+        form.addEventListener("submit", async function(e){
+
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById("name").value,
+                phone: document.getElementById("phone").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value
+            };
+
+            try {
+
+                const response = await fetch(
+                    "https://my-portfolio-1-aevn.onrender.com/send",
+                    {
+                        method: "POST",
+                        headers: {
+                            "Content-Type": "application/json"
+                        },
+                        body: JSON.stringify(data)
+                    }
+                );
+
+                const result = await response.json();
+
+                if(result.success){
+
+                    alert("Proposal Sent Successfully!");
+
+                    form.reset();
+
+                } else {
+
+                    alert("Failed To Send Proposal");
+
+                }
+
+            } catch(error){
+
+                console.error(error);
+
+                alert("Backend Not Reachable");
+
+            }
+
+        });
+
+    }
+
+    const firstLink = document.querySelector(".nav-link");
+
+moveIndicator(firstLink);
     }
 
     const sectionObserver = new IntersectionObserver((entries) => {
@@ -123,46 +197,3 @@ window.addEventListener('scroll', () => {
     });
     });
         
-document.getElementById("contactForm").addEventListener("submit", async function(e) {
-
-    e.preventDefault();
-
-    const data = {
-        name: document.getElementById("name").value,
-        phone: document.getElementById("phone").value,
-        email: document.getElementById("email").value,
-        message: document.getElementById("message").value
-    };
-
-    try {
-
-        const response = await fetch("https://my-portfolio-1-aevn.onrender.com/send", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-
-        if(result.success){
-
-            alert("Message sent successfully!");
-
-            document.getElementById("contactForm").reset();
-
-        }else{
-
-            alert("Failed to send message.");
-
-        }
-
-    } catch(error){
-
-        console.error(error);
-        alert("Server Error");
-
-    }
-
-});
