@@ -118,6 +118,7 @@ function moveIndicator(activeLink){
         star.style.left = Math.random() * 100 + '%';
         star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
         starsContainer.appendChild(star);
+        }
 
         const form = document.getElementById("contactForm");
 
@@ -165,7 +166,7 @@ function moveIndicator(activeLink){
 
                 console.error(error);
 
-                alert("Backend Not Reachable");
+                alert("Server is waking up, please try again in 30 seconds.");
 
             }
 
@@ -176,7 +177,7 @@ function moveIndicator(activeLink){
     const firstLink = document.querySelector(".nav-link");
 
 moveIndicator(firstLink);
-    }
+    
 
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
