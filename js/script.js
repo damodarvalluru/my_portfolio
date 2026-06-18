@@ -50,6 +50,7 @@ window.addEventListener('scroll', () => {
         
     // Active navbar
     let current = "";
+    const indicator = document.querySelector(".nav-indicator");
 
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
