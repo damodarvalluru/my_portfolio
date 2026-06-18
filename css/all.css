@@ -168,40 +168,51 @@ nav {
     align-items: center;
     gap: 5px;
     padding: 8px 15px;
-    background: var(--glass);
-    backdrop-filter: blur(15px);
-    border: 1px solid rgba(197, 160, 89, 0.35);
+    background: transparent;
+    backdrop-filter: none;
+    border: none;
     border-radius: 50px;
     z-index: 1000;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    box-shadow: 0 10px 30px rgba(97, 136, 140, 0.5);
     overflow: visible; /* Changed from hidden — needed for border animation */
-    animation: navFloat 4s ease-in-out infinite, navPulseGlow 3s ease-in-out infinite;
+    animation: navFloat 4s ease-in-out infinite;
 }
 
-/* --- Rotating golden arc border around nav --- */
+/* ==========================================
+   PREMIUM NAV BORDER ANIMATION
+   ========================================== */
 nav::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: -3px;
-    border-radius: 53px;
-    background: conic-gradient(
-        from 0deg,
-        transparent 0deg,
-        var(--accent) 50deg,
-        transparent 100deg,
-        transparent 200deg,
-        var(--accent) 260deg,
-        transparent 310deg,
-        transparent 360deg
-    );
-    z-index: -1;
-    animation: rotateNavBorder 4s linear infinite;
-    opacity: 0.85;
-}
+    border-radius: 55px;
 
-@keyframes rotateNavBorder {
-    0%   { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    background: linear-gradient(
+        90deg,
+        rgba(67, 224, 233, 0.2),
+        rgb(80, 178, 223),
+        rgba(201, 104, 227, 0.2)
+    );
+
+    background-size: 300% 300%;
+
+    animation: borderGlowFlow 4s ease infinite;
+
+    z-index: -2;
+}
+nav::after {
+    content: "";
+    position: absolute;
+    inset: 2px;
+    border-radius: 50px;
+    background: var(--glass);
+    backdrop-filter: blur(15px);
+    z-index: -1;
+}
+@keyframes borderGlowFlow {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
 }
 
 @keyframes navFloat {
@@ -209,26 +220,12 @@ nav::before {
     50%       { transform: translateX(-50%) translateY(-5px); }
 }
 
-@keyframes navPulseGlow {
-    0%, 100% {
-        box-shadow:
-            0 10px 30px rgba(0,0,0,0.5),
-            0 0 8px rgba(197,160,89,0.1);
-    }
-    50% {
-        box-shadow:
-            0 10px 30px rgba(0,0,0,0.5),
-            0 0 25px rgba(197,160,89,0.45),
-            0 0 50px rgba(197,160,89,0.15);
-    }
-}
-
 /* --- Nav Indicator (sliding highlight) --- */
 .nav-indicator {
     position: absolute;
     height: 45px;
     border-radius: 30px;
-    background: rgba(197,160,89,.18);
+    background: rgba(9, 210, 163, 0.18);
     transition: all .4s ease;
     z-index: 0;
 }
@@ -260,7 +257,7 @@ nav a::before {
     left: -120%;
     width: 80%;
     height: 100%;
-    background: linear-gradient(120deg, transparent, rgba(255,255,255,.3), transparent);
+    background: linear-gradient(120deg, transparent, rgba(35, 226, 220, 0.3), transparent);
     transform: skewX(-25deg);
     transition: .8s;
 }
@@ -287,7 +284,7 @@ nav a.active {
     background: var(--accent);
     color: var(--primary) !important;
     transform: translateY(-8px);
-    box-shadow: 0 10px 25px rgba(197,160,89,.35);
+    box-shadow: 0 10px 25px rgba(82, 244, 247, 0.35);
     animation: activePulse 2s infinite, activeFloat 1.5s ease-in-out infinite;
 }
 
@@ -298,9 +295,9 @@ nav a.active {
 }
 
 @keyframes activePulse {
-    0%   { box-shadow: 0 0 0 rgba(197,160,89,0); }
-    50%  { box-shadow: 0 0 20px rgba(197,160,89,.5); }
-    100% { box-shadow: 0 0 0 rgba(197,160,89,0); }
+    0%   { box-shadow: 0 0 0 rgba(106, 219, 227, 0); }
+    50%  { box-shadow: 0 0 20px rgba(115, 219, 220, 0.5); }
+    100% { box-shadow: 0 0 0 rgba(99, 208, 222, 0); }
 }
 
 .dv-logo {
