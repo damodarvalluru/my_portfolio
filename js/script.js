@@ -1,116 +1,102 @@
 /* --- Existing Code Logic --- */
-    let textElement;
-    const phrases = ["A NETWORKING ENTHUSIAST", "A FRONT END DEVELOPER", "A COMPUTER SCIENCE STUDENT", "A CORE PROGRAMMER"];
-    let phraseIndex = 0; let characterIndex = 0; let isDeleting = false; let typeSpeed = 150;
+let textElement;
+const phrases = ["A NETWORKING ENTHUSIAST", "A FRONT END DEVELOPER", "A COMPUTER SCIENCE STUDENT", "A CORE PROGRAMMER"];
+let phraseIndex = 0; let characterIndex = 0; let isDeleting = false; let typeSpeed = 150;
 
-/* --- Conditions: Toggle Dark/Light Mode --- */
-    function toggleTheme() {
-        const body = document.body;
-        const icon = document.getElementById('themeIcon');
-        if (body.getAttribute('data-theme') === 'light') {
-            body.removeAttribute('data-theme');
-            icon.className = 'fas fa-moon';
-        } else {
-            body.setAttribute('data-theme', 'light');
-            icon.className = 'fas fa-sun';
-        }
+// ✅ FIX 1: Declare globally
+let indicator;
+
+// ✅ FIX 2: Move function to global scope
+function moveIndicator(activeLink) {
+    if (!activeLink) return;
+    indicator.style.width = activeLink.offsetWidth + "px";
+    indicator.style.left = activeLink.offsetLeft + "px";
+}
+
+function toggleTheme() {
+    const body = document.body;
+    const icon = document.getElementById('themeIcon');
+    if (body.getAttribute('data-theme') === 'light') {
+        body.removeAttribute('data-theme');
+        icon.className = 'fas fa-moon';
+    } else {
+        body.setAttribute('data-theme', 'light');
+        icon.className = 'fas fa-sun';
     }
+}
 
 function handleScrollAction() {
-        const icon = document.getElementById('arrowIcon');
-        if (icon.classList.contains('fa-chevron-up')) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
-        }
+    const icon = document.getElementById('arrowIcon');
+    if (icon.classList.contains('fa-chevron-up')) {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
     }
+}
 
 function type() {
-        const currentPhrase = phrases[phraseIndex];
-        if (isDeleting) {
-            textElement.textContent = currentPhrase.substring(0, characterIndex - 1);
-            characterIndex--;
-            typeSpeed = 80;
-        } else {
-            textElement.textContent = currentPhrase.substring(0, characterIndex + 1);
-            characterIndex++;
-            typeSpeed = 150;
-        }
-        if (!isDeleting && characterIndex === currentPhrase.length) {
-            isDeleting = true; typeSpeed = 2000;
-        } else if (isDeleting && characterIndex === 0) {
-            isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typeSpeed = 500;
-        }
-        setTimeout(type, typeSpeed);
+    const currentPhrase = phrases[phraseIndex];
+    if (isDeleting) {
+        textElement.textContent = currentPhrase.substring(0, characterIndex - 1);
+        characterIndex--;
+        typeSpeed = 80;
+    } else {
+        textElement.textContent = currentPhrase.substring(0, characterIndex + 1);
+        characterIndex++;
+        typeSpeed = 150;
     }
+    if (!isDeleting && characterIndex === currentPhrase.length) {
+        isDeleting = true; typeSpeed = 2000;
+    } else if (isDeleting && characterIndex === 0) {
+        isDeleting = false; phraseIndex = (phraseIndex + 1) % phrases.length; typeSpeed = 500;
+    }
+    setTimeout(type, typeSpeed);
+}
 
 window.addEventListener('scroll', () => {
     const navLinks = document.querySelectorAll('.nav-link');
     const sections = document.querySelectorAll('section, header');
-        
-    // Active navbar
-    let current = "";
-    const indicator = document.querySelector(".nav-indicator");
 
+    let current = "";
     sections.forEach(section => {
         const sectionTop = section.offsetTop;
-
-        if(window.pageYOffset >= sectionTop - 150){
+        if (window.pageYOffset >= sectionTop - 150) {
             current = section.id;
         }
     });
 
     navLinks.forEach(link => {
         link.classList.remove('active');
-
-        if(link.getAttribute('href') === "#" + current){
-
-    link.classList.add('active');
-
-    moveIndicator(link);
-
-}
+        if (link.getAttribute('href') === "#" + current) {
+            link.classList.add('active');
+            moveIndicator(link); // ✅ Now works — moveIndicator is global
+        }
     });
 
-    // Arrow logic
     const arrow = document.getElementById('scrollArrow');
     const icon = document.getElementById('arrowIcon');
-
-    if(window.scrollY > 500){
+    if (window.scrollY > 500) {
         arrow.style.opacity = "1";
-    }else{
+    } else {
         arrow.style.opacity = "0.8";
     }
 
-    if(
-        window.innerHeight + window.scrollY >=
-        document.body.offsetHeight - 50
-    ){
+    if (window.innerHeight + window.scrollY >= document.body.offsetHeight - 50) {
         icon.className = "fas fa-chevron-up";
-    }else{
+    } else {
         icon.className = "fas fa-chevron-down";
     }
-
 });
-    document.addEventListener('DOMContentLoaded', () => {
-        const indicator = document.querySelector(".nav-indicator");
 
-function moveIndicator(activeLink){
+document.addEventListener('DOMContentLoaded', () => {
+    // ✅ FIX 3: Assign (not redeclare) — feeds the global variable
+    indicator = document.querySelector(".nav-indicator");
 
-    if(!activeLink) return;
+    textElement = document.getElementById('typewriter');
+    type();
 
-    indicator.style.width =
-        activeLink.offsetWidth + "px";
-
-    indicator.style.left =
-        activeLink.offsetLeft + "px";
-}
-
-        textElement = document.getElementById('typewriter');
-        type();
-
-        const starsContainer = document.getElementById('stars');
-        for (let i = 0; i < 150; i++) {
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 150; i++) {
         const star = document.createElement('div');
         star.className = 'star';
         const size = Math.random() * 2 + 'px';
@@ -119,66 +105,43 @@ function moveIndicator(activeLink){
         star.style.left = Math.random() * 100 + '%';
         star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
         starsContainer.appendChild(star);
-        }
+    }
 
-        const form = document.getElementById("contactForm");
-
-    if(form){
-
-        form.addEventListener("submit", async function(e){
-
+    const form = document.getElementById("contactForm");
+    if (form) {
+        form.addEventListener("submit", async function(e) {
             e.preventDefault();
-
             const data = {
                 name: document.getElementById("name").value,
                 phone: document.getElementById("phone").value,
                 email: document.getElementById("email").value,
                 message: document.getElementById("message").value
             };
-
             try {
-
                 const response = await fetch(
                     "https://my-portfolio-1-aevn.onrender.com/send",
                     {
                         method: "POST",
-                        headers: {
-                            "Content-Type": "application/json"
-                        },
+                        headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(data)
                     }
                 );
-
                 const result = await response.json();
-
-                if(result.success){
-
+                if (result.success) {
                     alert("Proposal Sent Successfully!");
-
                     form.reset();
-
                 } else {
-
                     alert("Failed To Send Proposal");
-
                 }
-
-            } catch(error){
-
+            } catch(error) {
                 console.error(error);
-
                 alert("Server is waking up, please try again in 30 seconds.");
-
             }
-
         });
-
     }
 
     const firstLink = document.querySelector(".nav-link");
-
-moveIndicator(firstLink);
-    
+    moveIndicator(firstLink); // ✅ Still works here too
 
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
@@ -189,7 +152,7 @@ moveIndicator(firstLink);
         card.addEventListener('mousemove', (e) => {
             const rect = card.getBoundingClientRect();
             const x = e.clientX - rect.left; const y = e.clientY - rect.top;
-            const rotateX = ((y - rect.height/2) / (rect.height/2)) * 10; 
+            const rotateX = ((y - rect.height/2) / (rect.height/2)) * 10;
             const rotateY = ((x - rect.width/2) / (rect.width/2)) * 10;
             card.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg) translateY(-8px)`;
         });
@@ -197,5 +160,4 @@ moveIndicator(firstLink);
             card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
         });
     });
-    });
-        
+});
