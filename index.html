@@ -3,222 +3,598 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Damodar | Academic Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Merriweather:wght@700&family=Montserrat:wght@300;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+    <title>Damodar Valluru | Academic &amp; Engineering Portfolio Dossier</title>
+    <meta name="description" content="Official Academic and Engineering Portfolio of Damodar Valluru, Computer Science Scholar at GMRIT with 9.67 CGPA. Full-Stack Developer, DSA Logic Solver & System Architect.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/all.css">
 </head>
 <body id="top">
 
-<div class="bg-blur"><div class="blob"></div></div>
+<!-- High-Tech Preloader Counter (Inspired by Reference Video 1 & 2) -->
+<div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader-content">
+        <div class="preloader-dossier-tag">
+            <span class="p-dot"></span> SYSTEM_DOSSIER // DAMODAR.V // v2026.4
+        </div>
+        <div class="preloader-counter">
+            <span id="loaderNumber">0</span><span class="pct">%</span>
+        </div>
+        <div class="preloader-bar">
+            <div class="preloader-progress" id="loaderProgress"></div>
+        </div>
+        <div class="preloader-sub">DAMODAR VALLURU &bull; COMPUTER SCIENCE SCHOLAR &bull; GMRIT</div>
+    </div>
+</div>
+
+<div class="progress-bar" id="progressBar"><span></span></div>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="bg-blur">
+    <div class="blob"></div>
+    <div class="blob blob-2"></div>
+</div>
 <div class="stars-container" id="stars"></div>
 
-<div class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+<div class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">
     <i class="fas fa-moon" id="themeIcon"></i>
 </div>
 
-<button class="scroll-arrow" id="scrollArrow" onclick="handleScrollAction()">
+<button class="scroll-arrow" id="scrollArrow" onclick="handleScrollAction()" title="Scroll toggle">
     <i class="fas fa-chevron-down" id="arrowIcon"></i>
 </button>
 
-<nav id="navbar">
+<!-- Floating Glass Capsule Navigation -->
+<nav id="navbar" aria-label="Main Navigation">
     <div class="nav-indicator"></div>
-    <a href="#home" class="nav-link"><i class="fas fa-home"></i> Home</a>
-    <a href="#about" class="nav-link"><i class="fas fa-user"></i> About</a>
-    <a href="#education" class="nav-link"><i class="fas fa-graduation-cap"></i> Education</a>
-    <a href="#certifications" class="nav-link"><i class="fas fa-certificate"></i> Certificates</a>
-    <a href="#skills" class="nav-link"><i class="fas fa-tools"></i> Skills</a>
-    <a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> Experience</a>
-    <a href="#interests" class="nav-link"><i class="fas fa-star"></i> Interests</a>
-    <a href="#interact" class="nav-link"><i class="fas fa-envelope"></i> Contact</a>
+    <a href="#home" class="nav-link active"><i class="fas fa-home"></i> <span>Home</span></a>
+    <a href="#about" class="nav-link"><i class="fas fa-user"></i> <span>About</span></a>
+    <a href="#education" class="nav-link"><i class="fas fa-graduation-cap"></i> <span>Education</span></a>
+    <a href="#certifications" class="nav-link"><i class="fas fa-certificate"></i> <span>Certificates</span></a>
+    <a href="#skills" class="nav-link"><i class="fas fa-tools"></i> <span>Skills</span></a>
+    <a href="#projects" class="nav-link"><i class="fas fa-layer-group"></i> <span>Projects</span></a>
+    <a href="#experience" class="nav-link"><i class="fas fa-briefcase"></i> <span>Experience</span></a>
+    <a href="#interests" class="nav-link"><i class="fas fa-star"></i> <span>Interests</span></a>
+    <a href="#interact" class="nav-link"><i class="fas fa-envelope"></i> <span>Contact</span></a>
     <div class="dv-logo">DV</div>
 </nav>
 
-<header id="home" style="height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center;">
-    <div class="profile-container">
-        <div class="spark-ring"></div>
-        <img src="images/damu.jpeg" alt="Damodar" class="profile-img">
+<!-- Hero Section: Synthesizing Kinetic Roles, 3D Dossier Frame & Dynamic Metric Cards -->
+<header id="home">
+    <!-- Top Dossier Status Bar -->
+    <div class="hero-top-badge">
+        <span class="hero-badge-item"><i class="fas fa-shield-halved"></i> OFFICIAL DOSSIER</span>
+        <span class="hero-badge-divider">//</span>
+        <span class="hero-badge-item">B.TECH CSE &bull; GMRIT</span>
+        <span class="hero-badge-divider">//</span>
+        <span class="hero-badge-item hero-status-pill"><span class="status-indicator-dot"></span> OPEN TO OPPORTUNITIES</span>
     </div>
-    <h1 class="rare-name">Damodar Valluru</h1>
-    
-    <div style="min-height: 40px; margin-bottom: 20px;">
-        <p style="font-size: 1.3rem; color: var(--text-muted); font-weight: 500; letter-spacing: 3px; text-transform: uppercase;">
-            I'm <span id="typewriter" style="color: var(--accent);"></span>
-        </p>
-    </div>
-     <p style="font-size: 1.1rem; color: var(--text-muted); font-weight: 500; letter-spacing: 3px; text-transform: uppercase; padding: 0 20px;">
-        Crafting Efficient Logic to Power the Next Generation of Web Applications
-     </p>
 
-    <em class="reveal-text" style="color:aqua; font-size:20px; display: block; margin-top: 20px; font-style: normal;">Find me on</em>
+    <div class="hero-grid">
+        <!-- Left: Kinetic Typography & Role Switcher -->
+        <div class="hero-content">
+            <span class="hero-greeting">// HELLO WORLD, I'M</span>
+            <h1 class="rare-name">Damodar Valluru</h1>
+            
+            <div class="hero-role-wrapper">
+                <span class="hero-role-prefix">I'M</span>
+                <span id="typewriter" class="hero-role-text"></span>
+            </div>
 
-    <div class="social-links">
-        <a href="https://www.linkedin.com/in/damodar-valluru-23508a359" target="_blank" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-        <a href="https://github.com/damodarvalluru" target="_blank" class="social-icon"><i class="fab fa-github"></i></a>
-        <a href="https://twitter.com/damodarvalluru" target="_blank" class="social-icon"><i class="fab fa-twitter"></i></a>
-        <a href="https://instagram.com/damodar_valluru" target="_blank" class="social-icon"><i class="fab fa-instagram"></i></a>
+            <p class="hero-subtext">
+                Crafting Efficient Logic &amp; High-Performance Web Architectures to Power the Next Generation of Applications.
+            </p>
+
+            <div class="hero-cta-group">
+                <a href="#projects" class="hero-btn primary-btn">
+                    <i class="fas fa-terminal"></i> <span>View Projects</span> <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="#interact" class="hero-btn secondary-btn">
+                    <i class="fas fa-paper-plane"></i> <span>Let's Talk</span>
+                </a>
+            </div>
+
+            <div class="hero-social-block">
+                <span class="social-label">CONNECT WITH ME:</span>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/damodar-valluru-23508a359" target="_blank" rel="noopener noreferrer" class="social-icon" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://github.com/damodarvalluru" target="_blank" rel="noopener noreferrer" class="social-icon" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://twitter.com/damodarvalluru" target="_blank" rel="noopener noreferrer" class="social-icon" title="Twitter"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/damodar_valluru" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Center: Angled 3D Profile Frame (Reference Videos 2 & 3) -->
+        <div class="hero-photo-wrapper">
+            <div class="dossier-card" id="heroPhotoCard">
+                <div class="corner-crosshair top-left">+</div>
+                <div class="corner-crosshair top-right">+</div>
+                <div class="corner-crosshair bottom-left">+</div>
+                <div class="corner-crosshair bottom-right">+</div>
+                
+                <div class="photo-badge">[ FEATURED SCHOLAR ]</div>
+                <div class="photo-glow-aura"></div>
+                <div class="photo-conic-ring"></div>
+                
+                <div class="photo-frame-inner">
+                    <img src="images/damu.jpeg" alt="Damodar Valluru" class="profile-img">
+                </div>
+
+                <div class="photo-bottom-meta">
+                    <span class="meta-dot"></span>
+                    <span class="meta-txt">ONLINE // SEASON: 2026 // v4.2</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right: Live Metric Stat Cards (Reference Video 3) -->
+        <div class="hero-metrics-column">
+            <div class="metric-card">
+                <div class="metric-tag">[ ACADEMIC HONOR ]</div>
+                <div class="metric-val">9.67</div>
+                <div class="metric-lbl">CGPA Standing</div>
+                <div class="metric-desc">B.Tech Computer Science &bull; GMRIT</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-tag">[ CORE EXPERTISE ]</div>
+                <div class="metric-val">Full-Stack</div>
+                <div class="metric-lbl">Architecture &amp; Logic</div>
+                <div class="metric-desc">Java &bull; Python &bull; SQL &bull; Web Protocols</div>
+            </div>
+
+            <div class="metric-card">
+                <div class="metric-tag">[ INITIATIVES ]</div>
+                <div class="metric-val">Project Lead</div>
+                <div class="metric-lbl">Departmental Systems</div>
+                <div class="metric-desc">GMRIT Academic Architecture</div>
+            </div>
+        </div>
     </div>
+
+    <!-- Scroll Indicator -->
+    <a href="#about" class="hero-scroll-indicator">
+        <span class="scroll-mouse"><span class="scroll-wheel"></span></span>
+        <span class="scroll-label">SCROLL TO EXPLORE DOSSIER</span>
+    </a>
 </header>
 
+<!-- Continuous Technical Marquee Stream -->
+<div class="marquee" aria-label="Technical strengths">
+    <div class="marquee-track">
+        <div class="mq-group">
+            <span class="mq">Python</span><i class="mq-dot" aria-hidden="true"></i>
+            <span class="mq">Java &amp; Spring Boot</span><i class="mq-dot" aria-hidden="true"></i>
+            <span class="mq">C Programming</span><i class="mq-dot" aria-hidden="true"></i>
+            <span class="mq">Data Structures</span><i class="mq-dot" aria-hidden="true"></i>
+            <span class="mq">Algorithms &amp; Optimization</span><i class="mq-dot" aria-hidden="true"></i>
+            <span class="mq">Web Technologies &amp; React</span><i class="mq-dot" aria-hidden="true"></i>
+            <span class="mq">Operating Systems</span><i class="mq-dot" aria-hidden="true"></i>
+            <span class="mq">DBMS &amp; SQL</span><i class="mq-dot" aria-hidden="true"></i>
+            <span class="mq">PHP &amp; Flask</span><i class="mq-dot" aria-hidden="true"></i>
+            <span class="mq">Networking &amp; Protocols</span><i class="mq-dot" aria-hidden="true"></i>
+            <span class="mq">Quantum Fundamentals</span><i class="mq-dot" aria-hidden="true"></i>
+        </div>
+        <div class="mq-group" aria-hidden="true">
+            <span class="mq">Python</span><i class="mq-dot"></i>
+            <span class="mq">Java &amp; Spring Boot</span><i class="mq-dot"></i>
+            <span class="mq">C Programming</span><i class="mq-dot"></i>
+            <span class="mq">Data Structures</span><i class="mq-dot"></i>
+            <span class="mq">Algorithms &amp; Optimization</span><i class="mq-dot"></i>
+            <span class="mq">Web Technologies &amp; React</span><i class="mq-dot"></i>
+            <span class="mq">Operating Systems</span><i class="mq-dot"></i>
+            <span class="mq">DBMS &amp; SQL</span><i class="mq-dot"></i>
+            <span class="mq">PHP &amp; Flask</span><i class="mq-dot"></i>
+            <span class="mq">Networking &amp; Protocols</span><i class="mq-dot"></i>
+            <span class="mq">Quantum Fundamentals</span><i class="mq-dot"></i>
+        </div>
+    </div>
+</div>
+
+<!-- 01 · About Section with Upgraded Artistic Philosophy Card (Reference Video 1) -->
 <section id="about">
+    <span class="section-eyebrow">01 &middot; Introduction</span>
     <h2>About Me</h2>
-    <div class="about-grid" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 50px; align-items: center;">
+    <div class="about-grid">
         <div class="about-content">
-            <p style="font-size: 1.1rem; line-height: 1.8;">
+            <p class="about-lead">
                 As a Computer Science scholar at <strong>GMR Institute of Technology</strong>, I bridge the gap between complex algorithmic theory and scalable architectural implementation.
             </p>
-            <div style="background: rgba(197, 160, 89, 0.05); border-left: 4px solid var(--accent); padding: 30px; border-radius: 0 20px 20px 0; margin-top: 25px;">
-                <h4 style="margin-top: 0; color: var(--accent); font-family: 'Playfair Display', serif; font-size: 1.4rem;">Core Philosophy</h4>
-                <ul style="list-style: none; padding: 0; margin: 0; font-weight: 600;">
-                    <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> Precision in Algorithm Design</li>
-                    <li style="margin-bottom: 15px;"><i class="fas fa-check-circle" style="color: var(--accent); margin-right: 10px;"></i> User-Centric Backend Logic</li>
+
+            <!-- Video 1 The Philosophy Inspired Showcase Card -->
+            <div class="philosophy-box">
+                <div class="philosophy-header">
+                    <span class="ph-tag">[ THE PHILOSOPHY ]</span>
+                    <h4 class="ph-title">Engineering Precision &times; Scalable Intuition</h4>
+                </div>
+                <blockquote class="ph-quote">
+                    "I believe great software is born at the intersection of mathematical precision and architectural clarity. Every algorithm, every schema, and every line of code is an opportunity to engineer something exceptional."
+                </blockquote>
+                <ul class="ph-pillars">
+                    <li><i class="fas fa-check-circle"></i> <span><strong>Precision in Algorithm Design:</strong> Optimal time &amp; space complexity across core computational problems.</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span><strong>User-Centric Backend Logic:</strong> High-reliability data flow powering intuitive digital interfaces.</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span><strong>Continuous Evolution:</strong> From Quantum fundamentals to cutting-edge web infrastructure.</span></li>
                 </ul>
             </div>
         </div>
-        <div class="about-image-wrapper" style="position: relative; display: flex; justify-content: center; align-items: center;">
-            <style>
-                .image-border-animate {
-                    position: absolute; width: 320px; height: 320px;
-                    border: 2px solid var(--accent);
-                    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
-                    animation: morphBorder 8s linear infinite alternate;
-                    z-index: 1;
-                }
-                .about-img-frame {
-                    width: 300px; height: 300px; object-fit: cover;
-                    border-radius: 20px; z-index: 2; position: relative;
-                }
-                @keyframes morphBorder {
-                    0% { border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%; transform: rotate(0deg); }
-                    100% { border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%; transform: rotate(180deg); }
-                }
-            </style>
+
+        <div class="about-image-wrapper">
+            <div class="about-glow"></div>
             <div class="image-border-animate"></div>
-            <img src="images/damu.jpeg" alt="Damodar" class="about-img-frame">
+            <img src="images/damu.jpeg" alt="Damodar Valluru" class="about-img-frame">
         </div>
     </div>
 </section>
 
+<!-- 02 · Academics Section -->
 <section id="education">
+    <span class="section-eyebrow">02 &middot; Academics</span>
     <h2>Academic Roadmap</h2>
     <div class="roadmap">
         <div class="roadmap-step">
-            <h4 style="margin:0; color:var(--accent); font-size: 1.3rem;">B.Tech in Computer Science</h4>
-            <strong style="font-size: 1.1rem;">GMR Institute of Technology</strong><br>
-            <span style="font-size: 1.1rem; font-weight: 500;">2024 - 2028 | <strong style="color: var(--accent)">CGPA: 9.67</strong></span>
+            <div class="roadmap-slot-tag">[ ACAD - 01 // HIGHER EDUCATION ]</div>
+            <h4 class="roadmap-title">B.Tech in Computer Science and Engineering</h4>
+            <strong class="roadmap-org">GMR Institute of Technology</strong><br>
+            <span class="roadmap-meta">2024 - 2028 | <strong class="badge-accent">CGPA: 9.67</strong></span>
+            <p class="roadmap-desc">Deep-diving into advanced data structures, algorithmic complexity, operating systems, database management systems, and modern software design.</p>
         </div>
         <div class="roadmap-step">
-            <h4 style="margin:0; color:var(--accent); font-size: 1.3rem;">Intermediate</h4>
-            <strong >Sri Chaitanya Junior College</strong>
-            <span style="color: var(--text-muted); font-weight: 600;">(Visakhapatnam)</span><br>
-            <span style="font-size: 1.1rem; font-weight: 500;">Batch: 2022 - 2024 | <strong style="color: var(--accent)">Score: 95.6%</strong></span>
+            <div class="roadmap-slot-tag">[ ACAD - 02 // INTERMEDIATE ]</div>
+            <h4 class="roadmap-title">Intermediate Education</h4>
+            <strong class="roadmap-org">Sri Chaitanya Junior College</strong>
+            <span class="roadmap-loc">(Visakhapatnam)</span><br>
+            <span class="roadmap-meta">Batch: 2022 - 2024 | <strong class="badge-accent">Score: 95.6%</strong></span>
+            <p class="roadmap-desc">Mastered core foundations of Mathematics, Physics, and analytical logic solving.</p>
         </div>
         <div class="roadmap-step">
-            <h4 style="margin:0; color:var(--accent); font-size: 1.3rem;">Secondary Education</h4>
-            <strong>Sri Chaitanya Techno School</strong>
-            <span style="color: var(--text-muted); font-weight: 600;">(Rajam)</span><br>
-            <span style="font-size: 1.1rem; font-weight: 500;">Batch: 2022 | <strong style="color: var(--accent)">Score: 92%</strong></span>
+            <div class="roadmap-slot-tag">[ ACAD - 03 // SECONDARY ]</div>
+            <h4 class="roadmap-title">Secondary School Certificate (SSC)</h4>
+            <strong class="roadmap-org">Sri Chaitanya Techno School</strong>
+            <span class="roadmap-loc">(Rajam)</span><br>
+            <span class="roadmap-meta">Batch: 2022 | <strong class="badge-accent">Score: 92%</strong></span>
+            <p class="roadmap-desc">Established high academic standards and early enthusiasm for computational science.</p>
         </div>
     </div>
 </section>
 
+<!-- 03 · Certifications Section -->
 <section id="certifications">
+    <span class="section-eyebrow">03 &middot; Certificates</span>
     <h2>Certifications</h2>
     <div class="cert-container">
         <div class="cert-box">
-            <h3 style="color: var(--accent); margin-top: 0;"><i class="fas fa-atom"></i> Qubitech</h3>
-            <p style="font-weight: 600; font-size: 1.1rem;">Quantum Fundamentals</p>
+            <div class="cert-badge">[ SPECIALIZED ADVANCED TRACK ]</div>
+            <h3 class="cert-heading"><i class="fas fa-atom"></i> Qubitech</h3>
+            <p class="cert-title">Quantum Fundamentals</p>
+            <p class="cert-desc">Explored quantum computational logic, superposition states, qubits, and introductory quantum gates.</p>
         </div>
         <div class="roadmap">
             <div class="roadmap-step">
-                <h4 style="margin:0; color:var(--accent); font-size: 1.3rem;">L & T</h4>
-                <ul style="list-style: none; padding: 0; margin-top: 15px;">
-                    <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: var(--accent); margin-right: 10px;"></i> Java & Spring Boot Essentials</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: var(--accent); margin-right: 10px;"></i> Full Stack Web Dev Bootcamp</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: var(--accent); margin-right: 10px;"></i> React & .NET API Bootcamp</li>
-                    <li style="margin-bottom: 10px;"><i class="fas fa-chevron-right" style="color: var(--accent); margin-right: 10px;"></i> Responsive Web Design</li>
+                <div class="roadmap-slot-tag">[ ENTERPRISE TRACK // L &amp; T EDUTECH ]</div>
+                <h4 class="roadmap-title">Larsen &amp; Toubro (L&amp;T) Professional Bootcamps</h4>
+                <ul class="cert-list">
+                    <li><i class="fas fa-chevron-right"></i> <span><strong>Java &amp; Spring Boot Essentials:</strong> Enterprise service development and dependency injection.</span></li>
+                    <li><i class="fas fa-chevron-right"></i> <span><strong>Full Stack Web Dev Bootcamp:</strong> End-to-end responsive web applications and REST APIs.</span></li>
+                    <li><i class="fas fa-chevron-right"></i> <span><strong>React &amp; .NET API Bootcamp:</strong> Component-driven client state linked to robust backend services.</span></li>
+                    <li><i class="fas fa-chevron-right"></i> <span><strong>Responsive Web Design:</strong> Modern CSS layout engines, responsive typography, and mobile-first UX.</span></li>
                 </ul>
             </div>
         </div>
     </div>
 </section>
 
+<!-- 04 · Skills Section with 3D Spotlight Tilt -->
 <section id="skills">
+    <span class="section-eyebrow">04 &middot; Skills</span>
     <h2>Technical Core</h2>
+    <p class="section-sub">Validated foundational competencies engineered for low latency, computational efficiency, and robust scalability.</p>
     <div class="card-grid compact">
-        <div class="card compact"><i class="fas fa-code"></i><div class="skill-text">Python, Java, C</div></div>
-        <div class="card compact"><i class="fas fa-sitemap"></i><div class="skill-text">Data Structures</div></div>
-        <div class="card compact"><i class="fas fa-microchip"></i><div class="skill-text">Algorithms</div></div>
-        <div class="card compact"><i class="fas fa-laptop-code"></i><div class="skill-text">Web Technologies</div></div>
-        <div class="card compact"><i class="fas fa-desktop"></i><div class="skill-text">Operating Systems</div></div>
-        <div class="card compact"><i class="fas fa-database"></i><div class="skill-text">DBMS & SQL</div></div>
-        <div class="card compact"><i class="fab fa-php"></i><div class="skill-text">PHP & Flask</div></div>
-        <div class="card compact"><i class="fas fa-network-wired"></i><div class="skill-text">Networking</div></div>
+        <div class="card compact" data-tilt>
+            <span class="card-tech-id">[ 01 ]</span>
+            <i class="fas fa-code"></i>
+            <div class="skill-text">Python, Java, C</div>
+            <span class="skill-cat">Core Languages</span>
+        </div>
+        <div class="card compact" data-tilt>
+            <span class="card-tech-id">[ 02 ]</span>
+            <i class="fas fa-sitemap"></i>
+            <div class="skill-text">Data Structures</div>
+            <span class="skill-cat">Trees &bull; Graphs &bull; Heaps</span>
+        </div>
+        <div class="card compact" data-tilt>
+            <span class="card-tech-id">[ 03 ]</span>
+            <i class="fas fa-microchip"></i>
+            <div class="skill-text">Algorithms</div>
+            <span class="skill-cat">DP &bull; Divide &amp; Conquer</span>
+        </div>
+        <div class="card compact" data-tilt>
+            <span class="card-tech-id">[ 04 ]</span>
+            <i class="fas fa-laptop-code"></i>
+            <div class="skill-text">Web Technologies</div>
+            <span class="skill-cat">HTML5 &bull; CSS3 &bull; JS</span>
+        </div>
+        <div class="card compact" data-tilt>
+            <span class="card-tech-id">[ 05 ]</span>
+            <i class="fas fa-desktop"></i>
+            <div class="skill-text">Operating Systems</div>
+            <span class="skill-cat">Processes &bull; Memory &bull; I/O</span>
+        </div>
+        <div class="card compact" data-tilt>
+            <span class="card-tech-id">[ 06 ]</span>
+            <i class="fas fa-database"></i>
+            <div class="skill-text">DBMS &amp; SQL</div>
+            <span class="skill-cat">Relational Schemas &bull; ACID</span>
+        </div>
+        <div class="card compact" data-tilt>
+            <span class="card-tech-id">[ 07 ]</span>
+            <i class="fab fa-php"></i>
+            <div class="skill-text">PHP &amp; Flask</div>
+            <span class="skill-cat">Backend APIs &amp; MVC</span>
+        </div>
+        <div class="card compact" data-tilt>
+            <span class="card-tech-id">[ 08 ]</span>
+            <i class="fas fa-network-wired"></i>
+            <div class="skill-text">Networking</div>
+            <span class="skill-cat">TCP/IP &bull; Sockets &bull; HTTP/S</span>
+        </div>
     </div>
 </section>
 
+<!-- 05 · Featured Projects / Archive Slots (Reference Videos 2 & 3) -->
+<section id="projects">
+    <span class="section-eyebrow">05 &middot; Archive Slots</span>
+    <h2>Featured Engineering Projects</h2>
+    <p class="section-sub">A curated showcase of architectural implementations, algorithm benchmarks, and full-stack solutions.</p>
+
+    <div class="projects-grid">
+        <!-- Project 1 -->
+        <div class="project-card" data-tilt>
+            <div class="prj-top-bar">
+                <span class="prj-slot-tag">[ PRJ - 001 // ENTERPRISE ]</span>
+                <span class="prj-status-dot"><span class="p-dot"></span> COMPLETED</span>
+            </div>
+            <h3 class="prj-title">Departmental Web Architecture &amp; Portal</h3>
+            <p class="prj-desc">
+                High-performance multi-module web portal engineered for GMRIT academic operations, featuring role-based authentication, real-time database indexing, and responsive user flows.
+            </p>
+            <div class="prj-tech-stack">
+                <span class="tech-chip">PHP &amp; Flask</span>
+                <span class="tech-chip">SQL / DBMS</span>
+                <span class="tech-chip">JavaScript</span>
+                <span class="tech-chip">Responsive CSS</span>
+            </div>
+            <div class="prj-footer">
+                <a href="https://github.com/damodarvalluru" target="_blank" rel="noopener noreferrer" class="prj-link">
+                    <span>Source Repository</span> <i class="fas fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="project-card" data-tilt>
+            <div class="prj-top-bar">
+                <span class="prj-slot-tag">[ PRJ - 002 // ALGORITHMS ]</span>
+                <span class="prj-status-dot"><span class="p-dot"></span> BENCHMARKED</span>
+            </div>
+            <h3 class="prj-title">Algorithmic Problem Solver &amp; DSA Suite</h3>
+            <p class="prj-desc">
+                Optimized computational suite implementing graph theory (Dijkstra, BFS/DFS), dynamic programming, and binary search trees with rigorous asymptotic complexity profiling.
+            </p>
+            <div class="prj-tech-stack">
+                <span class="tech-chip">Python</span>
+                <span class="tech-chip">Java</span>
+                <span class="tech-chip">C</span>
+                <span class="tech-chip">DSA Optimization</span>
+            </div>
+            <div class="prj-footer">
+                <a href="https://github.com/damodarvalluru" target="_blank" rel="noopener noreferrer" class="prj-link">
+                    <span>Source Repository</span> <i class="fas fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="project-card" data-tilt>
+            <div class="prj-top-bar">
+                <span class="prj-slot-tag">[ PRJ - 003 // FULL STACK ]</span>
+                <span class="prj-status-dot"><span class="p-dot"></span> INTEGRATED</span>
+            </div>
+            <h3 class="prj-title">Enterprise Reactive Web &amp; API Engine</h3>
+            <p class="prj-desc">
+                Full-stack system developed with modern component architectures and micro-service endpoints, incorporating secure data exchange, token validation, and state caching.
+            </p>
+            <div class="prj-tech-stack">
+                <span class="tech-chip">Java &amp; Spring Boot</span>
+                <span class="tech-chip">React.js</span>
+                <span class="tech-chip">REST APIs</span>
+                <span class="tech-chip">Git / CI-CD</span>
+            </div>
+            <div class="prj-footer">
+                <a href="https://github.com/damodarvalluru" target="_blank" rel="noopener noreferrer" class="prj-link">
+                    <span>Source Repository</span> <i class="fas fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Project 4 -->
+        <div class="project-card" data-tilt>
+            <div class="prj-top-bar">
+                <span class="prj-slot-tag">[ PRJ - 004 // PROTOCOLS ]</span>
+                <span class="prj-status-dot"><span class="p-dot"></span> SIMULATION</span>
+            </div>
+            <h3 class="prj-title">Network Socket &amp; Quantum Logic Simulator</h3>
+            <p class="prj-desc">
+                Low-latency socket protocol emulator testing packet reliability, client-server handshakes, combined with foundational quantum logic gate state implementations.
+            </p>
+            <div class="prj-tech-stack">
+                <span class="tech-chip">Networking Protocols</span>
+                <span class="tech-chip">Socket Programming</span>
+                <span class="tech-chip">Quantum Gates</span>
+                <span class="tech-chip">Python</span>
+            </div>
+            <div class="prj-footer">
+                <a href="https://github.com/damodarvalluru" target="_blank" rel="noopener noreferrer" class="prj-link">
+                    <span>Source Repository</span> <i class="fas fa-arrow-up-right-from-square"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- 06 · Experience Section -->
 <section id="experience">
+    <span class="section-eyebrow">06 &middot; Career</span>
     <h2>Professional Experience</h2>
     <div class="roadmap">
         <div class="roadmap-step">
-            <h4 style="margin:0; color:var(--accent); font-size: 1.3rem;">Full Stack Project Lead</h4>
-            <small style="font-weight: 700;">GMRIT Academic Projects | 2024 - Present</small>
-            <p style="font-weight: 500;">Developing scalable web architectures and leading database integration for departmental applications.</p>
+            <div class="roadmap-slot-tag">[ ACTIVE ROLE // 2024 - PRESENT ]</div>
+            <h4 class="roadmap-title">Full Stack Project Lead</h4>
+            <small style="font-weight: 700; color: var(--accent); display: block; margin: 4px 0 10px;">GMRIT Academic Projects &bull; Visakhapatnam / Rajam</small>
+            <p class="roadmap-desc">Architecting and leading scalable web implementations, database normalization, and backend API integration for departmental platforms and student management tools.</p>
         </div>
     </div>
 </section>
 
+<!-- 07 · Professional Themes -->
 <section id="interests">
+    <span class="section-eyebrow">07 &middot; Themes</span>
     <h2>Professional Themes</h2>
+    <p class="section-sub">Areas of deep technical passion driving constant innovation and creative problem solving.</p>
     <div class="card-grid compact">
-        <div class="card compact">
+        <div class="card compact" data-tilt>
             <i class="fas fa-network-wired"></i>
             <h4>Networking Enthusiast</h4>
+            <span class="theme-sub">Routing &bull; Protocols &bull; Packets</span>
         </div>
-        <div class="card compact">
+        <div class="card compact" data-tilt>
             <i class="fas fa-laptop-code"></i>
             <h4>Web Coding Passion</h4>
+            <span class="theme-sub">Modern UX &bull; Clean Architecture</span>
         </div>
-        <div class="card compact">
+        <div class="card compact" data-tilt>
             <i class="fas fa-language"></i>
             <h4>Programming Polyglot</h4>
+            <span class="theme-sub">C &bull; Java &bull; Python &bull; JS</span>
         </div>
-        <div class="card compact">
+        <div class="card compact" data-tilt>
             <i class="fas fa-brain"></i>
             <h4>DSA Logic Solver</h4>
+            <span class="theme-sub">Complex Puzzles &bull; Complexity</span>
         </div>
     </div>
 </section>
 
+<!-- 08 · Contact Section with Live Dispatch Terminal (Reference Video 3 & 2) -->
 <section id="interact">
-    <h2 style="text-align: center; margin-bottom: 50px;">Let's Collaborate</h2>
-    <div class="contact-wrapper" style="display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 30px;">
-        <div class="contact-form-container" style="background: rgba(255,255,255,0.02); padding: 40px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
-            <form id="contactForm" style="display: flex; flex-direction: column; gap: 20px;">
-                <input type="text" id="name" placeholder="Full Name" style="width: 100%; padding: 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-main); outline: none;" required>
-                <input type="tel" id="phone" placeholder="Mobile Number" style="width: 100%; padding: 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-main); outline: none;" required>
-                <input type="email" id="email" placeholder="Official Email" style="width: 100%; padding: 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-main); outline: none;" required>
-                <textarea id="message" rows="4" placeholder="How can we build together?" style="width: 100%; padding: 18px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; color: var(--text-main); outline: none; resize: none;"></textarea>
-                <button type="submit" class="submit-btn">Send Proposal</button>
+    <span class="section-eyebrow">08 &middot; Contact</span>
+    <h2 style="text-align: center; margin-bottom: 20px;">Let's Collaborate</h2>
+    <p class="section-sub">Ideas worth building deserve a partner who ships. Inspect the live dispatch payload below or transmit your proposal directly.</p>
+    
+    <div class="contact-dual-grid">
+        <!-- Video 3 Live Dispatch Terminal Card -->
+        <div class="dispatch-terminal-card" id="dispatchTerminal">
+            <div class="terminal-bar">
+                <div class="terminal-controls">
+                    <span class="t-btn red"></span>
+                    <span class="t-btn yellow"></span>
+                    <span class="t-btn green"></span>
+                </div>
+                <div class="terminal-title">// LIVE DISPATCH MODE &bull; JSON TRANSMISSION</div>
+                <div class="terminal-ping"><span class="p-dot"></span> READY</div>
+            </div>
+
+            <div class="terminal-body">
+                <div class="terminal-comment">// Real-time message payload synced to your input:</div>
+                <pre class="terminal-code"><code id="dispatchJson">{
+  <span class="jk">"target_recipient"</span>: <span class="jv">"Damodar Valluru"</span>,
+  <span class="jk">"sender_name"</span>: <span class="jv" id="jsonName">""</span>,
+  <span class="jk">"contact_phone"</span>: <span class="jv" id="jsonPhone">""</span>,
+  <span class="jk">"official_email"</span>: <span class="jv" id="jsonEmail">""</span>,
+  <span class="jk">"dispatch_message"</span>: <span class="jv" id="jsonMessage">""</span>,
+  <span class="jk">"transmission_status"</span>: <span class="jv-status" id="jsonStatus">"AWAITING_INPUT"</span>,
+  <span class="jk">"timestamp_utc"</span>: <span class="jv" id="jsonTime">"2026-09-24T17:30:00Z"</span>
+}</code></pre>
+            </div>
+
+            <div class="terminal-footer">
+                <div class="direct-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>damodarvalluru7@gmail.com</span>
+                </div>
+                <div class="direct-contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>+91 9573102505</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Working Contact Form (Preserved Endpoints & Fields) -->
+        <div class="contact-form-container">
+            <div class="form-header">
+                <h3 class="form-title">Send Official Proposal</h3>
+                <span class="form-tag">DIRECT TRANSMISSION</span>
+            </div>
+            <form id="contactForm">
+                <div class="input-group">
+                    <label for="name" class="input-label"><i class="fas fa-user"></i> Full Name</label>
+                    <input type="text" id="name" placeholder="e.g. John Doe / Tech Recruiter" required autocomplete="name">
+                </div>
+                <div class="input-group">
+                    <label for="phone" class="input-label"><i class="fas fa-phone"></i> Mobile Number</label>
+                    <input type="tel" id="phone" placeholder="e.g. +91 9876543210" required autocomplete="tel">
+                </div>
+                <div class="input-group">
+                    <label for="email" class="input-label"><i class="fas fa-envelope"></i> Official Email</label>
+                    <input type="email" id="email" placeholder="e.g. contact@company.com" required autocomplete="email">
+                </div>
+                <div class="input-group">
+                    <label for="message" class="input-label"><i class="fas fa-message"></i> How Can We Build Together?</label>
+                    <textarea id="message" rows="4" placeholder="Share your project vision, opportunity or inquiry..." required></textarea>
+                </div>
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <i class="fas fa-paper-plane"></i> <span>Send Proposal</span>
+                </button>
             </form>
         </div>
-
-        <div class="contact-info-card" style="background: linear-gradient(135deg, rgba(5,10,15,0.5) 0%, rgba(16,30,44,0.5) 100%); padding: 45px; border-radius: 30px; position: relative; height: fit-content; border: 1px solid rgba(197, 160, 89, 0.3);">
-            <div class="dv-badge" style="position: absolute; top: 25px; right: 25px; width: 50px; height: 50px; background: var(--accent); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; color: var(--primary);">DV</div>
-            <h3 style="color: var(--accent); font-family: 'Playfair Display', serif; font-size: 1.8rem; margin-bottom: 30px;">Contact Details</h3>
-            <div style="display: flex; align-items:center; gap: 20px; margin-bottom: 20px;">
-                <i class="fas fa-envelope contact-icon" style="color: var(--accent);"></i> damodarvalluru7@gmail.com
-            </div>
-            <div style="display: flex; align-items: center; gap: 20px;">
-                <i class="fas fa-phone-alt contact-icon" style="color: var(--accent);"></i> +91 9573102505
-            </div>
-        </div>
     </div>
 </section>
 
+<!-- Bold Watermark Signature Editorial Footer (Reference Video 1 & 3) -->
 <footer id="bottom">
-    <p style="text-align: center; padding: 20px; color: var(--text-muted);">&copy; 2026 Damodar Valluru | Refined for Professional Excellence</p>
+    <div class="footer-inner">
+        <div class="footer-top">
+            <div class="footer-brand">
+                <div class="footer-dv-box">DV</div>
+                <div>
+                    <h3 class="footer-brand-name">Damodar Valluru</h3>
+                    <p class="footer-brand-title">Computer Science Scholar &bull; GMRIT (CGPA 9.67)</p>
+                </div>
+            </div>
+            
+            <div class="footer-status-pill">
+                <span class="p-dot"></span>
+                <span>SYSTEM STATUS: 100% OPERATIONAL &bull; <span id="footerClock">IST</span></span>
+            </div>
+        </div>
+
+        <!-- Giant Typography Watermark (From Video 3) -->
+        <div class="footer-watermark" aria-hidden="true">
+            DAMODAR VALLURU
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2026 Damodar Valluru &bull; Engineered for Scalability &bull; All Rights Reserved</p>
+            <div class="footer-links">
+                <a href="#home">Back to Top <i class="fas fa-arrow-up"></i></a>
+            </div>
+        </div>
+    </div>
 </footer>
+
 <script src="js/script.js"></script>
 </body>
 </html>
