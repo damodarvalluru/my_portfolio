@@ -14,6 +14,7 @@
     --accent-soft: rgba(197, 160, 89, 0.15);
     --cyan-accent: #00d2ff;
     --green-accent: #00e676;
+    --red-accent: #ff3366;
     --glass: rgba(10, 17, 24, 0.88);
     --glass-card: rgba(13, 22, 32, 0.72);
     --glass-border: rgba(197, 160, 89, 0.22);
@@ -39,6 +40,7 @@
     --accent-soft: rgba(184, 134, 11, 0.12);
     --cyan-accent: #0284c7;
     --green-accent: #16a34a;
+    --red-accent: #e11d48;
     --glass: rgba(255, 255, 255, 0.92);
     --glass-card: rgba(255, 255, 255, 0.85);
     --glass-border: rgba(184, 134, 11, 0.22);
@@ -450,9 +452,6 @@ nav a.nav-link.active i {
 
 /* ==========================================================================
    HERO SECTION (Synthesis of Videos 1, 2, 3)
-   - Left: Kinetic Role Switcher & Bio
-   - Center: Angled 3D Profile Dossier Frame
-   - Right: Live Metric Stat Cards
    ========================================================================== */
 header#home {
     min-height: 100vh;
@@ -1417,33 +1416,165 @@ h2::after {
 }
 
 /* ==========================================================================
-   05 · FEATURED PROJECTS (ARCHIVE SLOTS - Videos 2 & 3)
+   05 · FEATURED PROJECTS (ARCHIVE_SLOTS HUD SYSTEM - Reference Video 2 & 3)
    ========================================================================== */
-.projects-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 26px;
+
+/* Filter Controls */
+.project-filter-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 35px;
 }
 
-.project-card {
-    padding: 32px;
-    border-radius: 24px;
-    background: linear-gradient(145deg, rgba(16, 26, 38, 0.7), rgba(9, 15, 23, 0.85));
-    border: 1px solid var(--glass-border-subtle);
+.prj-filter-btn {
+    font-family: var(--font-mono);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    background: rgba(16, 26, 38, 0.7);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    backdrop-filter: blur(10px);
+}
+
+.prj-filter-btn:hover {
+    color: #ffffff;
+    border-color: var(--accent);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.2);
+}
+
+.prj-filter-btn.active {
+    background: linear-gradient(135deg, rgba(197, 160, 89, 0.22), rgba(255, 51, 102, 0.15));
+    border-color: var(--accent);
+    color: var(--accent-glow);
+    box-shadow: 0 0 20px rgba(197, 160, 89, 0.35);
+}
+
+/* 3D Archive Slots Stage */
+.archive-slots-stage {
+    position: relative;
+    width: 100%;
+    perspective: 1400px;
+}
+
+/* Central Nexus Badge (Iconic Video 2 Frame 00:13) */
+.archive-slots-center-nexus {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px auto 35px;
+    position: relative;
+    max-width: 320px;
+}
+
+.nexus-glow-pulse {
+    position: absolute;
+    inset: -6px;
+    border-radius: 14px;
+    background: radial-gradient(circle, rgba(255, 51, 102, 0.45) 0%, rgba(197, 160, 89, 0.25) 50%, transparent 80%);
+    filter: blur(14px);
+    animation: nexusPulse 4s infinite alternate ease-in-out;
+    z-index: 0;
+}
+
+@keyframes nexusPulse {
+    0% { transform: scale(0.94); opacity: 0.6; }
+    100% { transform: scale(1.08); opacity: 1; filter: blur(20px); }
+}
+
+.nexus-inner-box {
+    position: relative;
+    z-index: 1;
+    background: #06090e;
+    border: 1.5px solid #ff3366;
+    border-radius: 12px;
+    padding: 12px 28px;
+    text-align: center;
+    box-shadow: 0 0 25px rgba(255, 51, 102, 0.35), inset 0 0 15px rgba(255, 51, 102, 0.15);
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.nexus-label {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 3px;
+    color: #ff3366;
+    text-shadow: 0 0 10px rgba(255, 51, 102, 0.8);
+}
+
+.nexus-sub {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+}
+
+/* Grid & Cards */
+.archive-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 28px;
+}
+
+.archive-slot-card {
+    padding: 30px;
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(14, 23, 34, 0.85), rgba(7, 12, 18, 0.92));
+    border: 1px solid rgba(197, 160, 89, 0.22);
     backdrop-filter: blur(14px);
-    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, box-shadow 0.4s ease;
+    transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), border-color 0.4s ease, box-shadow 0.4s ease, opacity 0.4s ease;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+    transform-style: preserve-3d;
 }
 
-.project-card:hover {
-    transform: translateY(-8px);
-    border-color: var(--accent);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(197, 160, 89, 0.2);
+.archive-slot-card.is-hidden {
+    display: none;
+}
+
+.archive-slot-card:hover {
+    border-color: #ff3366;
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.65), 0 0 35px rgba(255, 51, 102, 0.25);
+    transform: translateY(-8px) scale(1.02);
+}
+
+/* Corner Crosshairs */
+.card-crosshair {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    color: var(--accent);
+    line-height: 1;
+    pointer-events: none;
+    opacity: 0.6;
+    transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.card-crosshair.top-left { top: 8px; left: 10px; }
+.card-crosshair.top-right { top: 8px; right: 10px; }
+.card-crosshair.bottom-left { bottom: 8px; left: 10px; }
+.card-crosshair.bottom-right { bottom: 8px; right: 10px; }
+
+.archive-slot-card:hover .card-crosshair {
+    color: #ff3366;
+    opacity: 1;
+    text-shadow: 0 0 8px #ff3366;
 }
 
 .prj-top-bar {
@@ -1461,6 +1592,10 @@ h2::after {
     font-weight: 700;
 }
 
+.archive-slot-card:hover .prj-slot-tag {
+    color: #ff3366;
+}
+
 .prj-status-dot {
     display: inline-flex;
     align-items: center;
@@ -1471,25 +1606,25 @@ h2::after {
 }
 
 .prj-title {
-    font-size: 1.45rem;
+    font-size: 1.4rem;
     color: #ffffff;
-    margin: 0 0 14px;
+    margin: 0 0 12px;
     font-weight: 700;
     line-height: 1.3;
 }
 
 .prj-desc {
-    font-size: 0.95rem;
+    font-size: 0.94rem;
     color: var(--text-muted);
     line-height: 1.65;
-    margin: 0 0 22px;
+    margin: 0 0 20px;
 }
 
 .prj-tech-stack {
     display: flex;
     flex-wrap: wrap;
     gap: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 22px;
 }
 
 .tech-chip {
@@ -1501,6 +1636,13 @@ h2::after {
     font-size: 0.72rem;
     color: var(--accent-glow);
     font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.archive-slot-card:hover .tech-chip {
+    border-color: rgba(255, 51, 102, 0.4);
+    background: rgba(255, 51, 102, 0.08);
+    color: #ffffff;
 }
 
 .prj-footer {
@@ -1517,12 +1659,54 @@ h2::after {
     text-decoration: none;
     font-size: 0.88rem;
     font-weight: 700;
-    transition: color 0.3s ease, transform 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
 }
 
 .prj-link:hover {
-    color: var(--accent);
+    color: #060a0f;
+    background: var(--accent);
+    border-color: var(--accent);
     transform: translateX(4px);
+    box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);
+}
+
+/* Light Mode Overrides for Archive Slots */
+[data-theme="light"] .nexus-inner-box {
+    background: #ffffff;
+    border-color: #e11d48;
+    box-shadow: 0 4px 20px rgba(225, 29, 72, 0.15);
+}
+
+[data-theme="light"] .nexus-label {
+    color: #e11d48;
+    text-shadow: none;
+}
+
+[data-theme="light"] .archive-slot-card {
+    background: linear-gradient(145deg, #ffffff, #faf8f2);
+    border-color: rgba(184, 134, 11, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .archive-slot-card:hover {
+    border-color: #e11d48;
+    box-shadow: 0 20px 45px rgba(225, 29, 72, 0.15);
+}
+
+[data-theme="light"] .prj-filter-btn {
+    background: #ffffff;
+    border-color: rgba(0, 0, 0, 0.1);
+    color: #4b5563;
+}
+
+[data-theme="light"] .prj-filter-btn.active {
+    background: linear-gradient(135deg, rgba(184, 134, 11, 0.15), rgba(225, 29, 72, 0.08));
+    border-color: var(--accent);
+    color: var(--accent);
 }
 
 /* ==========================================================================
@@ -2027,7 +2211,8 @@ footer#bottom {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    .projects-grid {
+    .projects-grid,
+    .archive-grid {
         grid-template-columns: 1fr;
     }
 

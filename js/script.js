@@ -6,6 +6,7 @@
    - Live Dispatch JSON Mode Sync (Video 3)
    - Real-time IST Status Clock (Video 3)
    - 3D Interactive Card & Frame Tilt (Video 2)
+   - Archive Slots Category Filtering (Video 2)
    - Scroll Tracking, Nav Indicator & Preserved Backend API
    ========================================================================== */
 
@@ -200,7 +201,7 @@ function handleScrollAction() {
 
 /* --- 7. 3D TILT MICRO-INTERACTIONS (Reference Videos 2 & 3) --- */
 function setup3DTilt() {
-    const tiltElements = document.querySelectorAll('[data-tilt], .dossier-card, .metric-card');
+    const tiltElements = document.querySelectorAll('[data-tilt], .dossier-card, .metric-card, .archive-slot-card');
     const isTouch = window.matchMedia('(pointer: coarse)').matches;
     if (isTouch) return;
 
@@ -306,7 +307,36 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // 6. Intersection Observer for Scroll Reveals
+    // 6. Interactive Archive Slots Project Filter (Reference Video 2 HUD)
+    const filterButtons = document.querySelectorAll('.prj-filter-btn');
+    const projectCards = document.querySelectorAll('.archive-slot-card');
+
+    filterButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projectCards.forEach(card => {
+                const category = card.getAttribute('data-category');
+                if (filterValue === 'all' || category === filterValue) {
+                    card.classList.remove('is-hidden');
+                    card.style.opacity = '0';
+                    card.style.transform = 'scale(0.95)';
+                    requestAnimationFrame(() => {
+                        card.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+                        card.style.opacity = '1';
+                        card.style.transform = 'scale(1)';
+                    });
+                } else {
+                    card.classList.add('is-hidden');
+                }
+            });
+        });
+    });
+
+    // 7. Intersection Observer for Scroll Reveals
     const sectionObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -317,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('section').forEach(sec => sectionObserver.observe(sec));
 
-    // 7. Preserved Contact Form Submission Logic with Live Dispatch Visuals
+    // 8. Contact Form Submission with Live Dispatch Visuals & Real-Time Endpoint
     const form = document.getElementById("contactForm");
     const jsonStatus = document.getElementById("jsonStatus");
     const submitBtn = document.getElementById("submitBtn");
@@ -349,17 +379,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                // Try production Render URL first, fallback to relative endpoint
+                // Try local/direct server first for instant sub-second response, fallback to cloud Render
                 let response;
                 try {
-                    response = await fetch("https://my-portfolio-1-aevn.onrender.com/send", {
+                    response = await fetch("/send", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(data)
                     });
-                } catch (netErr) {
-                    // Fallback to local server endpoint if render is asleep
-                    response = await fetch("/send", {
+                } catch (localErr) {
+                    response = await fetch("https://my-portfolio-1-aevn.onrender.com/send", {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify(data)
@@ -377,22 +406,25 @@ document.addEventListener('DOMContentLoaded', () => {
                         submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> <span>Proposal Sent!</span>';
                     }
 
-                    // If server provided WhatsApp URL, redirect or show message
+                    // Open direct WhatsApp chat if available
                     if (result.whatsappURL) {
                         window.open(result.whatsappURL, '_blank');
                     }
 
                     setTimeout(() => {
-                        alert("Thank you! Your proposal has been transmitted successfully.");
+                        const statusMsg = result.emailSent && result.whatsappSent
+                            ? "Proposal delivered successfully via Email & WhatsApp!"
+                            : "Proposal delivered successfully!";
+                        alert(statusMsg);
                         form.reset();
                         setupLiveDispatch();
                         if (submitBtn) {
                             submitBtn.disabled = false;
                             submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> <span>Send Proposal</span>';
                         }
-                    }, 600);
+                    }, 500);
                 } else {
-                    throw new Error("Dispatch failed at endpoint");
+                    throw new Error(result.error || "Dispatch failed at endpoint");
                 }
             } catch (error) {
                 console.error("Submission error:", error);
@@ -406,7 +438,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     `Hello Damodar, I am ${nameVal} (${phoneVal}, ${emailVal}). ${messageVal}`
                 )}`;
                 
-                const openWA = confirm("The cloud mail server is currently spinning up. Would you like to transmit your proposal directly via WhatsApp?");
+                const openWA = confirm("The cloud mail server encountered a temporary delay. Would you like to transmit your proposal directly via WhatsApp?");
                 if (openWA) {
                     window.open(fallbackWA, '_blank');
                 }
@@ -419,7 +451,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 8. Custom Cursor (Fine Pointers Only)
+    // 9. Custom Cursor (Fine Pointers Only)
     const finePointer = window.matchMedia('(pointer: fine)').matches;
     const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -430,7 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let rx = -100, ry = -100, tx = -100, ty = -100;
             let frame = null;
 
-            document.querySelectorAll('a, button, .card, .project-card, .metric-card, .theme-toggle, .scroll-arrow, .submit-btn, .social-icon, input, textarea').forEach(el => {
+            document.querySelectorAll('a, button, .card, .project-card, .archive-slot-card, .metric-card, .theme-toggle, .scroll-arrow, .submit-btn, .social-icon, input, textarea').forEach(el => {
                 el.addEventListener('mouseenter', () => document.body.classList.add('cursor-active'));
                 el.addEventListener('mouseleave', () => document.body.classList.remove('cursor-active'));
             });
