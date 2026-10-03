@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/all.css">
 </head>
-<body id="top">
+<body id="top" data-theme="light">
 
 <!-- High-Tech Preloader Counter (Inspired by Reference Video 1 & 2) -->
 <div class="preloader" id="preloader" aria-hidden="true">
@@ -38,9 +38,18 @@
     <div class="blob blob-2"></div>
 </div>
 <div class="stars-container" id="stars"></div>
+<div class="bg-fx" aria-hidden="true">
+    <div class="bg-fx-grid"></div>
+    <div class="bg-fx-aurora"></div>
+    <div class="bg-fx-lines">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+</div>
 
 <div class="theme-toggle" id="themeToggle" onclick="toggleTheme()" title="Toggle theme">
-    <i class="fas fa-moon" id="themeIcon"></i>
+    <i class="fas fa-sun" id="themeIcon"></i>
 </div>
 
 <button class="scroll-arrow" id="scrollArrow" onclick="handleScrollAction()" title="Scroll toggle">
@@ -580,50 +589,13 @@
     </div>
 </section>
 
-<!-- 08 · Contact Section with Live Dispatch Terminal (Reference Video 3 & 2) -->
+<!-- 08 · Contact Section -->
 <section id="interact">
     <span class="section-eyebrow">08 &middot; Contact</span>
     <h2 style="text-align: center; margin-bottom: 20px;">Let's Collaborate</h2>
-    <p class="section-sub">Ideas worth building deserve a partner who ships. Inspect the live dispatch payload below or transmit your proposal directly.</p>
+    <p class="section-sub">Ideas worth building deserve a partner who ships. Transmit your proposal directly.</p>
     
     <div class="contact-dual-grid">
-        <!-- Video 3 Live Dispatch Terminal Card -->
-        <div class="dispatch-terminal-card" id="dispatchTerminal">
-            <div class="terminal-bar">
-                <div class="terminal-controls">
-                    <span class="t-btn red"></span>
-                    <span class="t-btn yellow"></span>
-                    <span class="t-btn green"></span>
-                </div>
-                <div class="terminal-title">// LIVE DISPATCH MODE &bull; JSON TRANSMISSION</div>
-                <div class="terminal-ping"><span class="p-dot"></span> READY</div>
-            </div>
-
-            <div class="terminal-body">
-                <div class="terminal-comment">// Real-time message payload synced to your input:</div>
-                <pre class="terminal-code"><code id="dispatchJson">{
-  <span class="jk">"target_recipient"</span>: <span class="jv">"Damodar Valluru"</span>,
-  <span class="jk">"sender_name"</span>: <span class="jv" id="jsonName">""</span>,
-  <span class="jk">"contact_phone"</span>: <span class="jv" id="jsonPhone">""</span>,
-  <span class="jk">"official_email"</span>: <span class="jv" id="jsonEmail">""</span>,
-  <span class="jk">"dispatch_message"</span>: <span class="jv" id="jsonMessage">""</span>,
-  <span class="jk">"transmission_status"</span>: <span class="jv-status" id="jsonStatus">"AWAITING_INPUT"</span>,
-  <span class="jk">"timestamp_utc"</span>: <span class="jv" id="jsonTime">"2026-09-24T17:30:00Z"</span>
-}</code></pre>
-            </div>
-
-            <div class="terminal-footer">
-                <div class="direct-contact-item">
-                    <i class="fas fa-envelope"></i>
-                    <span>damodarvalluru7@gmail.com</span>
-                </div>
-                <div class="direct-contact-item">
-                    <i class="fas fa-phone"></i>
-                    <span>+91 9573102505</span>
-                </div>
-            </div>
-        </div>
-
         <!-- Working Contact Form (Preserved Endpoints & Fields) -->
         <div class="contact-form-container">
             <div class="form-header">
@@ -684,6 +656,8 @@
                 <a href="#home">Back to Top <i class="fas fa-arrow-up"></i></a>
             </div>
         </div>
+
+        <p class="site-end-signature">Damodar Valluru</p>
     </div>
 </footer>
 

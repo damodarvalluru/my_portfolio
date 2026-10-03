@@ -3,7 +3,6 @@
    Synthesizing dynamic features from Videos 1, 2, and 3:
    - High-Tech Preloader Counter (Video 1 & 2)
    - Kinetic Role Switcher (Video 3 & 1)
-   - Live Dispatch JSON Mode Sync (Video 3)
    - Real-time IST Status Clock (Video 3)
    - 3D Interactive Card & Frame Tilt (Video 2)
    - Archive Slots Category Filtering (Video 2)
@@ -88,61 +87,6 @@ function type() {
     setTimeout(type, typeSpeed);
 }
 
-/* --- 3. LIVE DISPATCH MODE (Reference Video 3) --- */
-function setupLiveDispatch() {
-    const nameIn = document.getElementById('name');
-    const phoneIn = document.getElementById('phone');
-    const emailIn = document.getElementById('email');
-    const messageIn = document.getElementById('message');
-
-    const jsonName = document.getElementById('jsonName');
-    const jsonPhone = document.getElementById('jsonPhone');
-    const jsonEmail = document.getElementById('jsonEmail');
-    const jsonMessage = document.getElementById('jsonMessage');
-    const jsonStatus = document.getElementById('jsonStatus');
-    const jsonTime = document.getElementById('jsonTime');
-
-    if (!nameIn || !jsonName) return;
-
-    function updateTimestamp() {
-        if (jsonTime) {
-            jsonTime.textContent = `"${new Date().toISOString()}"`;
-        }
-    }
-
-    function syncPayload() {
-        const hasContent = nameIn.value || phoneIn.value || emailIn.value || messageIn.value;
-
-        jsonName.textContent = JSON.stringify(nameIn.value || "");
-        jsonPhone.textContent = JSON.stringify(phoneIn.value || "");
-        jsonEmail.textContent = JSON.stringify(emailIn.value || "");
-        
-        const truncatedMsg = messageIn.value.length > 45 
-            ? messageIn.value.substring(0, 45) + "..." 
-            : messageIn.value;
-        jsonMessage.textContent = JSON.stringify(truncatedMsg || "");
-
-        if (jsonStatus) {
-            if (hasContent) {
-                jsonStatus.textContent = '"COMPOSING_PAYLOAD..."';
-                jsonStatus.style.color = '#38bdf8';
-            } else {
-                jsonStatus.textContent = '"AWAITING_INPUT"';
-                jsonStatus.style.color = '#facc15';
-            }
-        }
-        updateTimestamp();
-    }
-
-    [nameIn, phoneIn, emailIn, messageIn].forEach(input => {
-        if (input) {
-            input.addEventListener('input', syncPayload);
-        }
-    });
-
-    updateTimestamp();
-}
-
 /* --- 4. LIVE FOOTER CLOCK (Reference Video 3) --- */
 function updateFooterClock() {
     const clockEl = document.getElementById('footerClock');
@@ -177,16 +121,13 @@ function toggleTheme() {
     }
 }
 
-// Restore theme from localStorage
+// Light Mode is the default on every open/reload
 (() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        document.body.setAttribute('data-theme', 'light');
-        window.addEventListener('DOMContentLoaded', () => {
-            const icon = document.getElementById('themeIcon');
-            if (icon) icon.className = 'fas fa-sun';
-        });
-    }
+    document.body.setAttribute('data-theme', 'light');
+    window.addEventListener('DOMContentLoaded', () => {
+        const icon = document.getElementById('themeIcon');
+        if (icon) icon.className = 'fas fa-sun';
+    });
 })();
 
 /* --- 6. SCROLL ACTION TOGGLE --- */
@@ -280,9 +221,6 @@ document.addEventListener('DOMContentLoaded', () => {
         type();
     }
 
-    // 2. Initialize live dispatch mode
-    setupLiveDispatch();
-
     // 3. Initialize live IST clock
     updateFooterClock();
     setInterval(updateFooterClock, 1000);
@@ -347,9 +285,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('section').forEach(sec => sectionObserver.observe(sec));
 
-    // 8. Contact Form Submission with Live Dispatch Visuals & Real-Time Endpoint
+    // 8. Contact Form Submission with Real-Time Endpoint
     const form = document.getElementById("contactForm");
-    const jsonStatus = document.getElementById("jsonStatus");
     const submitBtn = document.getElementById("submitBtn");
 
     if (form) {
@@ -368,11 +305,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 message: messageVal
             };
 
-            // Visual feedback
-            if (jsonStatus) {
-                jsonStatus.textContent = '"TRANSMITTING_PAYLOAD..."';
-                jsonStatus.style.color = '#38bdf8';
-            }
             if (submitBtn) {
                 submitBtn.disabled = true;
                 submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> <span>Transmitting...</span>';
@@ -398,10 +330,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 const result = await response.json();
 
                 if (result.success) {
-                    if (jsonStatus) {
-                        jsonStatus.textContent = '"DISPATCHED_SUCCESSFULLY"';
-                        jsonStatus.style.color = '#22c55e';
-                    }
                     if (submitBtn) {
                         submitBtn.innerHTML = '<i class="fas fa-check-circle"></i> <span>Proposal Sent!</span>';
                     }
@@ -417,7 +345,6 @@ document.addEventListener('DOMContentLoaded', () => {
                             : "Proposal delivered successfully!";
                         alert(statusMsg);
                         form.reset();
-                        setupLiveDispatch();
                         if (submitBtn) {
                             submitBtn.disabled = false;
                             submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> <span>Send Proposal</span>';
@@ -428,10 +355,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             } catch (error) {
                 console.error("Submission error:", error);
-                if (jsonStatus) {
-                    jsonStatus.textContent = '"DISPATCH_FAILED_FALLBACK_WA"';
-                    jsonStatus.style.color = '#ef4444';
-                }
                 
                 // Fallback direct WhatsApp option
                 const fallbackWA = `https://wa.me/919573102505?text=${encodeURIComponent(
