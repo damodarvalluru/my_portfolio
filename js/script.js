@@ -121,12 +121,12 @@ function toggleTheme() {
     }
 }
 
-// Light Mode is the default on every open/reload
+// Dark Mode is the default on every open/reload
 (() => {
-    document.body.setAttribute('data-theme', 'light');
+    document.body.setAttribute('data-theme', 'dark');
     window.addEventListener('DOMContentLoaded', () => {
         const icon = document.getElementById('themeIcon');
-        if (icon) icon.className = 'fas fa-sun';
+        if (icon) icon.className = 'fas fa-moon';
     });
 })();
 
