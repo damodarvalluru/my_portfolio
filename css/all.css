@@ -756,8 +756,8 @@ header#home {
 }
 
 .secondary-btn {
-    background: rgba(255, 255, 255, 0.04);
-    color: #ffffff;
+    background: var(--accent-soft);
+    color: var(--text-main);
     border: 1px solid var(--glass-border);
     backdrop-filter: blur(10px);
 }
@@ -790,7 +790,7 @@ header#home {
 .social-icon {
     width: 42px;
     height: 42px;
-    background: rgba(255, 255, 255, 0.04);
+    background: var(--accent-soft);
     border: 1px solid var(--glass-border);
     border-radius: 12px;
     display: flex;
@@ -1468,7 +1468,7 @@ h2::after {
 }
 
 .cert-list li strong {
-    color: #ffffff;
+    color: var(--text-main);
 }
 
 /* ==========================================================================
@@ -1789,7 +1789,7 @@ h2::after {
 .archive-slot-card:hover .tech-chip {
     border-color: rgba(255, 51, 102, 0.4);
     background: rgba(255, 51, 102, 0.08);
-    color: #ffffff;
+    color: var(--text-main);
 }
 
 .prj-footer {
@@ -1802,14 +1802,14 @@ h2::after {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    color: #ffffff;
+    color: var(--text-main);
     text-decoration: none;
     font-size: 0.88rem;
     font-weight: 700;
     padding: 8px 16px;
     border-radius: 20px;
-    background: rgba(255, 255, 255, 0.04);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--accent-soft);
+    border: 1px solid var(--glass-border);
     transition: all 0.3s ease;
 }
 
@@ -1847,7 +1847,7 @@ h2::after {
 [data-theme="light"] .prj-filter-btn {
     background: #ffffff;
     border-color: rgba(0, 0, 0, 0.1);
-    color: #4b5563;
+    color: var(--text-muted);
 }
 
 [data-theme="light"] .prj-filter-btn.active {
@@ -2148,15 +2148,15 @@ footer#bottom {
 }
 
 [data-theme="light"] header#home .rare-name {
-    color: #111827;
-    background: linear-gradient(135deg, #111827 40%, var(--accent) 100%);
+    color: var(--text-main);
+    background: linear-gradient(135deg, var(--text-main) 40%, var(--accent) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
 [data-theme="light"] h2 {
-    color: #111827;
-    background: linear-gradient(90deg, #111827, var(--accent), #111827);
+    color: var(--text-main);
+    background: linear-gradient(90deg, var(--text-main), var(--accent), var(--text-main));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
@@ -2166,7 +2166,7 @@ footer#bottom {
 }
 
 [data-theme="light"] .preloader-counter {
-    color: #111827;
+    color: var(--text-main);
 }
 
 [data-theme="light"] .dossier-card {
@@ -2182,7 +2182,7 @@ footer#bottom {
 }
 
 [data-theme="light"] .hero-status-pill {
-    color: #111827;
+    color: var(--text-main);
 }
 
 [data-theme="light"] .metric-card,
@@ -2202,7 +2202,7 @@ footer#bottom {
 [data-theme="light"] .card h4,
 [data-theme="light"] .form-title,
 [data-theme="light"] .footer-brand-name {
-    color: #111827;
+    color: var(--text-main);
 }
 
 [data-theme="light"] .philosophy-box {
@@ -2210,8 +2210,29 @@ footer#bottom {
     border-color: rgba(var(--accent-rgb), 0.3);
 }
 
+/* Keep the cert card on the light surface so --accent / --cyan-accent text stays legible */
+[data-theme="light"] .cert-box {
+    background: linear-gradient(145deg, #ffffff, #faf8f2);
+    border-color: rgba(var(--accent-rgb), 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="light"] .cert-title {
+    color: var(--text-main);
+}
+
+/* Marquee strip: dark band would swallow the violet --text-muted on a light page */
+[data-theme="light"] .marquee {
+    background: rgba(255, 255, 255, 0.55);
+    border-color: rgba(var(--accent-rgb), 0.22);
+}
+
+[data-theme="light"] .footer-bottom {
+    border-top-color: rgba(var(--accent-rgb), 0.16);
+}
+
 [data-theme="light"] .ph-title {
-    color: #111827;
+    color: var(--text-main);
 }
 
 [data-theme="light"] .ph-quote {
@@ -2219,7 +2240,7 @@ footer#bottom {
 }
 
 [data-theme="light"] .ph-pillars li strong {
-    color: #111827;
+    color: var(--text-main);
 }
 
 [data-theme="light"] nav {
@@ -2229,11 +2250,11 @@ footer#bottom {
 }
 
 [data-theme="light"] nav a.nav-link {
-    color: #4b5563;
+    color: var(--text-muted);
 }
 
 [data-theme="light"] nav a.nav-link:hover {
-    color: #111827;
+    color: var(--text-main);
 }
 
 [data-theme="light"] nav a.nav-link.active {
@@ -2244,7 +2265,7 @@ footer#bottom {
 [data-theme="light"] input,
 [data-theme="light"] textarea {
     background: #ffffff;
-    color: #111827;
+    color: var(--text-main);
     border-color: rgba(0, 0, 0, 0.12);
 }
 
